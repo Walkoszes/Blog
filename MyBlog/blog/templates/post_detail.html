@@ -8,5 +8,17 @@
     <p><strong>Published on:</strong> {{ post.published_date }}</p>
     <p><strong>Author:</strong> <a href="{% url 'posts_by_author' post.author.id %}">{{ post.author.name }}</a></p>
     <div>{{ post.content }}</div>
+
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+        <li>
+            <p><strong>{{ comment.author_name }}</strong> ({{ comment.created_date }}):</p>
+            <p>{{ comment.text }}</p>
+        </li>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </ul>
 </body>
 </html>
